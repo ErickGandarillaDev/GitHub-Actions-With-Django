@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from os import getenv,enviro as env
+from os import getenv,environ as env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'github_actions.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if os.getenv('GITHUB_WORKFLOW'):
+if getenv('GITHUB_WORKFLOW'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -81,7 +81,7 @@ if os.getenv('GITHUB_WORKFLOW'):
             'USER': 'postgres',
             'PASSWORD': 'postgres',
             'HOST': 'localhost',
-            'PORT': '5432'
+            'PORT': 5432
         }
     }
 else:
